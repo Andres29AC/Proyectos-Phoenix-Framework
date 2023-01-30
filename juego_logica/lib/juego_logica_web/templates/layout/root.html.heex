@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="csrf-token" content={csrf_token_value()}>
+    <%= live_title_tag assigns[:page_title] || "JuegoLogica", suffix: " · Phoenix Framework" %>
+    <link phx-track-static rel="stylesheet" href={Routes.static_path(@conn, "/assets/app.css")}/>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+    <script defer phx-track-static type="text/javascript" src={Routes.static_path(@conn, "/assets/app.js")}></script>
+  </head>
+  <body style="background-image: url('images/fondo.jpg');height:577px;background-size:cover;background-position:center;">
+     <button id="boton-reglas" class="bg-blue-500 hover:bg-blue-700  text-white font-bold py-2 px-4 rounded-full" style="margin:6px;">
+      Objetivo
+     </button>
+     <%# background-repeat:no-repeat; %>
+      <script>
+         document.getElementById("boton-reglas").addEventListener("click", function() {
+          Swal.fire({
+            title: 'Objetivo del Juego',
+            html: '<p>El jugador tiene que apagar todas las luces en un tablero. Cada celda del tablero tiene un interruptor que puede encender o apagar una luz. El objetivo del juego es encontrar la combinación correcta de interruptores para apagar todas las luces.</p>',
+            confirmButtonText: 'Entendido'
+          })
+        });
+      </script>
+
+    <header> 
+      <h1 id="titulo" class ="text-5xl font-display font-light text-center uppercase" >Puzzle de Luces</h1>
+     <%# <button id="boton-reglas" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"> %>
+     <%#  Objetivo %>
+     <%# </button> %>
+      <script>
+        var titulo = document.getElementById("titulo");
+        titulo.onclick = function(){
+          alert("Juego de logica");
+        }
+      </script>
+      <style>
+      #titulo{
+        transition: font-size 0.5s ease;
+        color: white;
+      }
+        #titulo:hover{
+          font-size: 60px;
+          color: #d14c58;
+        }
+      </style> 
+      <%# <div id="reglas" style="display: none;"> %>
+      <%#   <h2>Explicacion:</h2> %>
+      <%#   <p>El jugador tiene que apagar todas las luces en un tablero. Cada celda del tablero tiene un %> 
+      <%#     interruptor que puede encender o apagar una luz. El objetivo del juego es encontrar la %> 
+      <%#   combinación correcta de interruptores para apagar todas las luces.</p> %>   
+      <%# </div> %>
+      <script>
+        <%# document.getElementById("boton-reglas").addEventListener("click", function(){ %>
+        <%#   var reglas = document.getElementById("reglas"); %>
+        <%#   if(reglas.style.display == "none"){ %>
+        <%#     reglas.style.display = "block"; %>
+        <%#     document.getElementById("boton-reglas").innerHTML = "Ocultar Objetivo"; %>
+        <%#   }else{ %>
+        <%#     reglas.style.display = "none"; %>
+        <%#     document.getElementById("boton-reglas").innerHTML = "Objetivo"; %>
+        <%#   } %> 
+          <%# }); %>
+        
+        <%# document.getElementById("boton-reglas").addEventListener("click", function() { %>
+        <%#    window.open("reglas.html", "Reglas del juego", "height=400, width=600"); %>
+          <%# }); %>
+        
+        <%# document.getElementById("boton-reglas").addEventListener("click", function() { %>
+        <%#   Swal.fire({ %>
+        <%#     title: 'Objetivo del Juego', %>
+        <%#     html: '<p>El jugador tiene que apagar todas las luces en un tablero. Cada celda del tablero tiene un interruptor que puede encender o apagar una luz. El objetivo del juego es encontrar la combinación correcta de interruptores para apagar todas las luces.</p>', %>
+        <%#     confirmButtonText: 'Entendido' %>
+        <%#   }) %>
+        <%# }); %>
+        
+      </script>
+
+    </header>
+    <%= @inner_content %>
+  </body>
+</html>
